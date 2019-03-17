@@ -25,7 +25,7 @@
         },
         swiperSlides: [1, 2, 3, 4, 5]
       }
-    },
+    },  
     mounted() {
       setInterval(() => {
         console.log('simulate async data')
@@ -37,5 +37,7 @@
   }
 </script>
 <style scoped>
-    
+     img {
+       width: 100%;
+     }
 </style>

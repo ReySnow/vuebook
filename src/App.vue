@@ -1,10 +1,16 @@
 <template>
   <div id="app">
-     <router-view></router-view>
+    <transition name="fadeIn">
+      <keep-alive>
+        <router-view v-if="$route.meta.KeepAlive"></router-view>
+      </keep-alive>
+    </transition>
+    <transition>
+     <router-view v-if="!$route.meta.KeepAlive"></router-view>
+    </transition> 
      <Tab></Tab> 
   </div>
 </template>
-
 <script>
 import Tab from "./base/Tab.vue";
 export default {
@@ -32,11 +38,25 @@ export default {
        -webkit-appearance:none;
     }
 
-    .carrousel {
+    .mainContent {
         position: fixed;
         width: 100%;
         top: 40px;
         bottom: 50px;
         overflow: auto;
+    }
+
+   
+    .fadeIn-enter {
+        opacity: 0;
+    }
+
+    .fadeIn-enter-active {
+        transition: all 1s linear;
+    }
+
+    .fadeIn-leaver-active {
+        transition: all 1s linear;
+        opacity: 0
     }
 </style>
